@@ -5,18 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tutorial Page</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <nav>
-        <div>
-            <a id="nav-logo">DaniellPan.com</a>
-        </div>
-        <div>
-            <a id="nav-links" href="index.html">Home</a>
-            <a id="nav-links" href="index.html">Tutorials</a>
-            <a id="nav-links" href="index.html">Projects</a>
-        </div> 
-    </nav>
+    
+    <div id="navbar-container"></div>
+
     <h1>Tutorial Page | Microcontrollers</h1>
     
     <div id="tutorial-list">
@@ -38,10 +32,7 @@
             tutorialList.innerHTML += MicrocontrollerModules();
         }
 
-        // Add tutorials when page loads
         addTutorials();
-
-        // Existing click handler for expanding/collapsing tutorials
         document.getElementById('tutorial-list').addEventListener('click', function(e) {
             const tutorialItem = e.target.closest('.tutorial-item');
             
@@ -58,5 +49,7 @@
             }
         });
     </script>
+
+    <script src="loadNavbar.js"></script>
 </body>
 </html>

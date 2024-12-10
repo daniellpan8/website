@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <div>
+            <a id="nav-logo">DaniellPan.com</a>
+        </div>
+        <div>
+            <a id="nav-links" href="index.html">Home</a>
+            <a id="nav-links" href="index.html">Tutorials</a>
+            <a id="nav-links" href="index.html">Projects</a>
+        </div> 
+    </nav>
+    <h1>Tutorial Page | Microcontrollers</h1>
+    
+    <div id="tutorial-list">
+        <!-- Tutorial components will be dynamically inserted here -->
+    </div>
+
+    <script type="module">
+        import { 
+            Microcontrollers, 
+            MicrocontrollerModules
+        } from './TutorialComponents.js';
+
+        // Function to add tutorials to the page
+        function addTutorials() {
+            const tutorialList = document.getElementById('tutorial-list');
+            
+            // Add tutorials in the order you want
+            tutorialList.innerHTML += Microcontrollers();
+            tutorialList.innerHTML += MicrocontrollerModules();
+        }
+
+        // Add tutorials when page loads
+        addTutorials();
+
+        // Existing click handler for expanding/collapsing tutorials
+        document.getElementById('tutorial-list').addEventListener('click', function(e) {
+            const tutorialItem = e.target.closest('.tutorial-item');
+            
+            if (tutorialItem) {
+                const content = tutorialItem.querySelector('.tutorial-content');
+                content.classList.toggle('active');
+                
+                const allContents = document.querySelectorAll('.tutorial-content');
+                allContents.forEach(item => {
+                    if (item !== content) {
+                        item.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

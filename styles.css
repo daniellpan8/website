@@ -1,0 +1,130 @@
+:root {
+    --bg-primary: #121212;
+    --bg-secondary: #1e1e1e;
+    --text-primary: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --border-color: #333;
+    --hover-color: #2c2c2c;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    line-height: 1.6;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    border: green 2px solid;
+}
+
+h1 {
+    color: var(--text-primary);
+    text-align: center;
+    /* border: red 2px solid; */
+}
+h2 {
+    /* border: yellow 2px solid; */
+    margin-bottom: 0;
+} 
+p {
+    margin-top: 0;
+    /* border: orange 2px solid; */
+    color: var(--text-secondary);
+}
+ul {
+    margin-top: 0;
+    /* border: blue 2px solid; */
+    color: var(--text-secondary);
+}
+b {
+    color: var(--text-primary);
+}
+
+.tutorial-item {
+    border: 2px solid var(--border-color);
+    margin-bottom: 10px;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.tutorial-header {
+    background-color: var(--bg-secondary);
+    padding: 10px;
+    font-weight: bold;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
+    border-radius: 4px 4px 0 0;
+}
+
+.tutorial-header:hover {
+    background-color: var(--hover-color);
+}
+
+.tutorial-content {
+    display: none;
+    padding: 10px;
+    background-color: var(--bg-primary);
+    color: var(--text-secondary);
+}
+
+.tutorial-content.active {
+    display: block;
+}
+
+.tutorial-content ul {
+    padding-left: 20px;
+}
+
+.tutorial-content li {
+    margin-bottom: 5px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    /* border: green 2px solid; */
+    /* right: 10px; */
+    font-weight: bold;
+    /* background-color: var(--bg-secondary); */
+    padding: 0.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+}
+
+#nav-logo{
+    color: var(--text-primary);
+    font-size: 1.5em;
+}
+
+#nav-links {
+    /* border: red 2px solid; */
+    color: var(--text-primary);
+    font-size: 1.5em;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#link-color {
+    color: var(--text-primary);
+    font-weight: bold;
+    font-style: italic;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 30%;
+}
+
+td, th {
+    border: 1px solid var(--border-color);
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: var(--bg-secondary);
+}

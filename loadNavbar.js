@@ -2,7 +2,7 @@ function loadNavbar() {
     const navbarHTML = `
         <div class="topnav">
             <div id="logo-and-name">
-                <img src="LogoOG1212.jpg" alt="DaniellPan Logo" class="navbar-logo" width="50px" height="50px">
+                <img src="LogoOG1212.jpg" alt="DaniellPan Logo" width="50px" height="50px">
                 <h2 href="index.html" class="active">DaniellPan.com</h2>
             </div>
             <div id="myLinks">

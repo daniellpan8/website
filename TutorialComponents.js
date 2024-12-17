@@ -31,16 +31,32 @@ export function MicrocontrollerModules() {
             <div class="tutorial-header">Microcontroller Modules</div>
             <div class="tutorial-content">
                 <p>Neural networks are computing systems vaguely inspired by biological neural networks. They consist of:</p>
+                <h2>I2C Interface</h2>
                 <ul>
                     <li>
                         <a id="link-color" href="MAX17043.html">MAX17043</a> - Learn about gathering voltage and battery percentage data
                     </li>
-                    <li id="link-color" href="data.html">LoRa Module</li>
-                    <li id="link-color" href="data.html">GPS Module (NEO-M8N)</li>
-                    <li id="link-color" href="data.html"></li>
-                    <li id="link-color" href="data.html">Weights and Biases</li>
+                    <li>
+                        <a id="link-color" href="LoRa.html">LoRa</a> - Learn about long range communication modules
+                    </li>
+                    <li>
+                        <a id="link-color" href="GPS.html">GPS Module (NEO-M8N)</a> - Understand how to create meaningful features
+                    </li>
                 </ul>
                 <p>They're particularly powerful for complex pattern recognition tasks.</p>
+                <h2>SPI Interface</h2>
+                <ul>
+                    <li>
+                        <a id="link-color" href="MAX17043.html">MAX17043</a> - Learn about gathering voltage and battery percentage data
+                    </li>
+                    <li>
+                        <a id="link-color" href="LoRa.html">LoRa</a> - Learn about long range communication modules
+                    </li>
+                    <li>
+                        <a id="link-color" href="GPS.html">GPS Module (NEO-M8N)</a> - Understand how to create meaningful features
+                    </li>
+                </ul>
+                <h2>UART Interface</h2>
             </div>
         </div>
     `;

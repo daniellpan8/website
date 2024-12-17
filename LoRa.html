@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoRa Modules with ESP32</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/an-old-hope.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div id="navbar-container"></div>
+    <script src="loadNavbar.js"></script>
+    
+    <h1>LoRa Modules with ESP32</h1>
+
+    <h2>Overview</h2>
+    <p>LoRa (Long Range) modules are wireless communication devices designed for low-power data transmission at long ranges, 
+        making them ideal for Internet of Things (IoT) applications. These modules can communicate over several kilometers 
+        in open environments and hundreds of meters in urban areas. The LoRa modules used in this implementation are RFM95W 
+        transceivers, which are based on the sx1276 chip. The modules use this chip to operate on 915MHz, which is the legal 
+        frequency band in North America. There are other frequency bands and regulations depending on the region. For example, 
+        Asia uses 433 MHz and Europe uses 868MHz. Make sure to choose the appropriate frequency band based on your region’s regulations.</p>
+    <h2>Hardware Required</h2>
+        <ul>
+            <li>ESP32 microcontroller</li>
+            <li>2 LoRa modules (RFM95W)</li>
+            <li>External antenna (if required)</li>
+            <li>Jumper wires</li>
+            <li>Breadboard (optional)</li>
+        </ul>
+    <h2>Wiring Connections</h2>
+    <p>This implementation will use the SPI interface for communication between the ESP32 and the LoRa modules. 
+        The default SPI pins on the ESP32 are <b>GPIO 18 (SCK)</b>, <b>GPIO 23 (MOSI)</b>, and <b>GPIO 19 (MISO)</b>. 
+        Additionally, the LoRa modules require the <b>NSS</b>, <b>RST</b>, and <b>DI0</b> pins to be connected to the ESP32.
+        The connections are as follows:</p>
+    </p>
+    <table>
+        <tr>
+            <th>LoRa</th>
+            <th>ESP32</th>
+        </tr>
+        <tr>
+            <td>VCC</td>
+            <td>3v3</td>
+        </tr>
+        <tr>
+            <td>GND</td>
+            <td>GND</td>
+        </tr>
+        <tr>
+            <td>SCK</td>
+            <td>GPIO 18</td>
+        </tr>
+        <tr>
+            <td>MOSI</td>
+            <td>GPIO 23</td>
+        </tr>
+        <tr>
+            <td>MISO</td>
+            <td>GPIO 19</td>
+        </tr>
+        <tr>
+            <td>NSS</td>
+            <td>GPIO 4</td>
+        </tr>
+        <tr>
+            <td>RST</td>
+            <td>GPIO 5</td>
+        </tr>
+        <tr>
+            <td>DI0</td>
+            <td>GPIO 2</td>
+        </tr>
+    </table>
+    <h2>LoRa Receiver Example Code</h2>
+    <pre><code class="language-cpp">/* LoRa receiver code with ESP32 */
+#include &lt;LoRa.h&gt;
+#include &lt;SPI.h&gt;
+
+#define NSS 4
+#define RST 5
+#define DI0 2
+
+String LoRaData;
+
+void setup() {
+    Serial.begin(115200);
+    LoRa.setPins(NSS, RST, DI0); // Set the pins for LoRa module
+
+    while (!LoRa.begin(915E6)) { // Change the frequency based on your region
+        Serial.println(".");
+        delay(500);
+    }
+    LoRa.setSyncWord(0xF1); // Set the sync word to match with the transmitter
+    Serial.println("LoRa Initializing Successful!");
+}
+
+void loop() {
+    int packetSize = LoRa.parsePacket(); // Check if a packet is received
+    if (packetSize) {
+        Serial.print("Received packet: ");
+        while (LoRa.available()) {
+            LoRaData = LoRa.readString(); // Read the data
+        }
+        Serial.println(LoRaData); // Print the received data onto the serial monitor
+    }
+}
+    </code></pre>
+
+    <h2>LoRa Transmitter Example Code</h2>
+    <pre><code class="language-cpp">/* LoRa transmitter code with ESP32 */
+#include &lt;LoRa.h&gt;
+#include &lt;SPI.h&gt;
+
+#define NSS 4
+#define RST 5
+#define DI0 2
+
+// Initialize message to transmit
+String message = "Hello LoRa!";
+
+void setup() {
+    Serial.begin(115200);
+    LoRa.setPins(NSS, RST, DI0); // Set the pins for LoRa module
+
+    while (!LoRa.begin(915E6)) { // Change the frequency based on your region
+        Serial.println(".");
+        delay(500);
+    }
+    LoRa.setSyncWord(0xF1); // Set the sync word to match with the receiver
+    Serial.println("LoRa Initializing Successful!");
+}
+
+void loop() {
+    LoRa.beginPacket(); // Start the transmission
+    LoRa.print(messageToTransmit); // Send the message
+    LoRa.endPacket(); // End the transmission
+
+    // Print the transmitted message onto the serial monitor
+    Serial.println("Transmitted: " + message); 
+
+    // Send message every 2 seconds
+    delay(2000);
+}
+    </code></pre>
+
+    <script>
+        hljs.highlightAll();
+    </script>
+    <script src="loadNavbar.js"></script>
+    
+</body>
+</html>

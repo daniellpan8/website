@@ -27,6 +27,7 @@ h1 {
 h2 {
     /* border: yellow 2px solid; */
     margin-bottom: 0;
+    color: var(--text-primary);
 } 
 p {
     margin-top: 0;
@@ -118,7 +119,11 @@ nav {
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 30%;
+    width: 40%;
+}
+
+#table-2 {
+    width: 60%;
 }
 
 td, th {
@@ -182,6 +187,17 @@ tr:nth-child(even) {
 
 .active {
     font-weight: bold;
+}
+
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    height: 400px;
 }
 
 @media screen and (max-width: 768px) {

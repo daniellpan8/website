@@ -189,7 +189,17 @@ tr:nth-child(even) {
     font-weight: bold;
 }
 
-.hljs {
+.lib-code {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.large-code {
     display: block;
     overflow-x: auto;
     padding: 0.5em;

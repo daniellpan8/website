@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAX17043 Module with ESP32</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/an-old-hope.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div id="navbar-container"></div>
+    <script src="../loadNavbar.js"></script>
+    
+    <h1>MAX17043 Fuel Gauge Module with ESP32</h1>
+
+    <h2>Overview</h2>
+    <p>The MAX17043 module is a battery fuel gauge that provides accurate battery percentage and voltage readings for lithium-ion batteries. 
+        This tutorial covers the implementation of this module with an ESP32 microcontroller, focusing on battery monitoring and I2C communication.</p>
+    <h2>Hardware Required</h2>
+        <ul>
+            <li>ESP32 microcontroller</li>
+            <li>MAX17043 battery fuel gauge module</li>
+            <li>Jumper wires</li>
+            <li>Breadboard (optional)</li>
+        </ul>
+    <h2>Wiring Connections</h2>
+    <p>For this implementation, the ESP32’s default I2C pins are <b>GPIO21 (SDA)</b> and <b>GPIO22 (SCL)</b>. 
+        However, other pins can be assigned and used. In this case, we’ve chosen to use alternative
+         I2C pins, <b>GPIO32 (SDA)</b> and <b>GPIO33 (SCL)</b>, for flexibility in pin assignment and potential 
+         routing constraints in a larger project.
+    </p>
+    <table id="table-2">
+        <tr>
+            <th>MAX17043</th>
+            <th>ESP32</th>
+            <th>3.7V Lithium-ion Battery</th>
+        </tr>
+        <tr>
+            <td>VCC</td>
+            <td>N/A</td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+            <td>GND</td>
+            <td>N/A</td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+            <td>SDA</td>
+            <td>GPIO 32</td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+            <td>SCL</td>
+            <td>GPIO 33</td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+            <td>B+</td>
+            <td>N/A</td>
+            <td>B+</td>
+        </tr>
+        <tr>
+            <td>B-</td>
+            <td>N/A</td>
+            <td>B-</td>
+        </tr>
+    </table>
+    <h2>Library Installation (platformio.ini file)</h2>
+    <pre class="lib-code"><code>[env:esp32dev]
+platform = espressif32
+board = esp32dev
+framework = arduino
+lib_deps = porrey/MAX1704X@^1.2.8</code></pre>
+    <h2>Example Code</h2>
+    <pre class="large-code"><code class="language-cpp">/* MAX17043 Battery Fuel Gauge Module with ESP32 */
+#include "Arduino.h"
+#include "MAX17043.h"
+
+void setup(){
+    Serial.begin(115200);
+    Wire.begin(32, 33);
+    FuelGauge.begin();
+    FuelGauge.quickstart();
+}
+
+void loop() {
+    float percentage = FuelGauge.percent();
+    float voltage = FuelGauge.voltage();
+    
+    Serial.print("Battery percentage: ");
+    Serial.print(percentage);
+    Serial.println("%");
+
+    Serial.print("Battery voltage: ");
+    Serial.print(voltage);
+    Serial.println("mV");
+
+    delay(1000);
+}</code></pre>
+
+    <script>
+        hljs.highlightAll();
+    </script>
+    <script src="loadNavbar.js"></script>
+    
+</body>
+</html>

@@ -2,13 +2,13 @@ function loadNavbar() {
     const navbarHTML = `
         <div class="topnav">
             <div id="logo-and-name">
-                <img src="LogoOG1212.jpg" alt="DaniellPan Logo" width="50px" height="50px">
+                <img src="../LogoOG1212.jpg" alt="DaniellPan Logo" width="50px" height="50px">
                 <h2 href="index.html" class="active">DaniellPan.com</h2>
             </div>
             <div id="myLinks">
-                <a href="index.html">Home</a>
-                <a href="tutorials.html">Tutorials</a>
-                <a href="projects.html">Projects</a>
+                <a href="../index.html">Home</a>
+                <a href="../tutorials.html">Tutorials</a>
+                <a href="../projects.html">Projects</a>
             </div>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i>

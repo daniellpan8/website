@@ -3,9 +3,9 @@
 
 export function Microcontrollers() {
     return `
-        <div class="tutorial-item">
-            <div class="tutorial-header">Introduction to the ESP32 Microcontroller</div>
-            <div class="tutorial-content">
+        <div class="block-item">
+            <div class="block-header">Introduction to the ESP32 Microcontroller</div>
+            <div class="block-content">
                 <p>The ESP32 is a powerful and versatile microcontroller designed by Espressif Systems, 
                 widely used in Internet of Things (IoT) applications. It has a dual-core processor with built-in 
                 Wi-Fi and Bluetooth capabilities, unlike its predecessor, the ESP8266. This microcontroller features 
@@ -24,9 +24,9 @@ export function Microcontrollers() {
 
 export function MicrocontrollerModules() {
     return `
-        <div class="tutorial-item">
-            <div class="tutorial-header">Microcontroller Modules</div>
-            <div class="tutorial-content">
+        <div class="block-item">
+            <div class="block-header">Microcontroller Modules</div>
+            <div class="block-content">
                 <p>I2C, SPI, and UART are communication protocols for data transfer between microcontrollers 
                 and peripheral devices like sensors, displays, and modules. The ESP32 supports natively supports these 
                 protocols, making it versatile for embedded systems projects.</p>
@@ -62,22 +62,6 @@ export function MicrocontrollerModules() {
                     <li>
                         <a id="link-color" href="esp32modules/GPS.html">GPS Module (NEO-M8N)</a> - Learn how to track satellites and retrieve precise location data
                     </li>
-            </div>
-        </div>
-    `;
-}
-
-// Example of how to add a new tutorial component
-export function NewTutorialTopic() {
-    return `
-        <div class="tutorial-item">
-            <div class="tutorial-header">New Tutorial Topic</div>
-            <div class="tutorial-content">
-                <p>Description of a new tutorial topic.</p>
-                <ul>
-                    <li>First key point</li>
-                    <li>Second key point</li>
-                </ul>
             </div>
         </div>
     `;

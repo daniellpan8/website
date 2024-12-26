@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Tutorial Page</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/png" href="images/LogoOG1212.jpg">
@@ -12,7 +12,7 @@
     
     <div id="navbar-container"></div>
 
-    <h1>Home Page</h1>
+    <h1>Tutorial Page | Microcontrollers</h1>
     
     <div id="block-list">
         <!-- Tutorial components will be dynamically inserted here -->
@@ -20,26 +20,27 @@
 
     <script type="module">
         import { 
-            About, 
-            Experiences
-        } from './HomeComponents.js';
+            Microcontrollers, 
+            MicrocontrollerModules
+        } from './TutorialComponents.js';
 
-        // Function to add blocks
-        function addBlock() {
-            const blockList = document.getElementById('block-list');
+        // Function to add tutorials to the page
+        function addTutorials() {
+            const tutorialList = document.getElementById('block-list');
             
-            // Add blocks in the order you want
-            blockList.innerHTML += About();
-            blockList.innerHTML += Experiences();
+            // Add tutorials in the order you want
+            tutorialList.innerHTML += Microcontrollers();
+            tutorialList.innerHTML += MicrocontrollerModules();
         }
 
-        addBlock();
+        addTutorials();
         document.getElementById('block-list').addEventListener('click', function(e) {
-            const blockItem = e.target.closest('.block-item');
+            const tutorialItem = e.target.closest('.block-item');
             
-            if (blockItem) {
-                const content = blockItem.querySelector('.block-content');
+            if (tutorialItem) {
+                const content = tutorialItem.querySelector('.block-content');
                 content.classList.toggle('active');
+                
             }
         });
     </script>

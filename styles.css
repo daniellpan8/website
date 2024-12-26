@@ -43,7 +43,7 @@ b {
     color: var(--text-primary);
 }
 
-.tutorial-item {
+.block-item {
     border: 2px solid var(--border-color);
     margin-bottom: 10px;
     cursor: pointer;
@@ -52,7 +52,7 @@ b {
     transition: background-color 0.3s ease;
 }
 
-.tutorial-header {
+.block-header {
     background-color: var(--bg-secondary);
     padding: 10px;
     font-weight: bold;
@@ -61,27 +61,28 @@ b {
     border-radius: 4px 4px 0 0;
 }
 
-.tutorial-header:hover {
+.block-header:hover {
     background-color: var(--hover-color);
 }
 
-.tutorial-content {
+.block-content {
     display: none;
     padding: 10px;
     background-color: var(--bg-primary);
     color: var(--text-secondary);
 }
 
-.tutorial-content.active {
+.block-content.active {
     display: block;
+    font-weight: normal;
 }
 
-.tutorial-content ul {
+.block-content ul {
     padding-left: 20px;
 }
 
-.tutorial-content li {
-    margin-bottom: 5px;
+.block-content li p {
+    margin-bottom: 0px; 
 }
 
 nav {
@@ -178,6 +179,7 @@ tr:nth-child(even) {
     right: 0;
     top: 0;
     border-radius: 8px;
+    height: 22px;
 }
 
 .topnav a:hover {

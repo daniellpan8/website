@@ -1,4 +1,4 @@
-// TutorialComponents.js
+// HomeComponents.js
 
 
 export function About() {
@@ -33,6 +33,34 @@ export function Experiences() {
                 to enhance security. For the .NET application, I also enabled <b>Continuous Integration and Continuous Deployment (CI/CD)</b> to allow seamless 
                 updates by automatically deploying new changes pushed to the GitHub repository.
                 </p>
+            </div>
+        </div>
+    `;
+}
+
+export function Capstone() {
+    return `
+        <div class="block-item">
+            <div class="block-header">Capstone Project - Remote Pet Monitoring System</div>
+            <div class="block-content">
+                <p>For my capstone project, I am working in a team of 4 students to design and implement a remote pet monitoring system. 
+                The system consists of a transmitter and a receiver. The transmitter is attached on the pet's collar and collects 
+                GPS location data and battery percentage. The receiver gets this data through Long Range (LoRa) communication and is displayed 
+                on a phone app.
+                </p>
+
+                <h2>Components</h2>
+                <h3>Transmitter (Collar)</h3>
+                <p>The transmitter consists of the following components:</p>
+                <ul>
+                    <li><p>GPS Module</p></li>
+                    <li><p>Battery Level Sensor</p></li>
+                    <li><p>Microcontroller</p></li>
+                    <li><p>LoRa Module</p></li>
+                </ul>
+                <h3>Receiver</h3>
+
+                <h3>Phone Application</h3>
             </div>
         </div>
     `;

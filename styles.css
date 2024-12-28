@@ -27,10 +27,18 @@ h1 {
 h2 {
     /* border: yellow 2px solid; */
     margin-bottom: 0;
+    /* margin-top: 0; */
     color: var(--text-primary);
 } 
+h3 {
+    /* border: blue 2px solid; */
+    margin-top: 0;
+    margin-bottom: 0;
+    color: var(--text-primary);
+}
 p {
     margin-top: 0;
+    /* margin-bottom: 0px; */
     /* border: orange 2px solid; */
     color: var(--text-secondary);
 }
@@ -75,6 +83,7 @@ b {
 .block-content.active {
     display: block;
     font-weight: normal;
+    padding-bottom: 0px;
 }
 
 .block-content ul {

@@ -59,9 +59,23 @@ export function MicrocontrollerModules() {
                 microcontrollers and peripheral devices, like GPS modules, Bluetooth modules, and more. Unlike SPI, UART operates asynchronously 
                 without relying on a shared clock signal. It only requires two wires: TX (Transmit) and RX (Receive) to enable half-duplex communication, 
                 where data is sent and received one direction at a time.
+                </p>
+                <ul>
                     <li>
                         <a id="link-color" href="esp32modules/GPS.html">GPS Module (NEO-M8N)</a> - Learn how to track satellites and retrieve precise location data
                     </li>
+                </ul>
+
+                <h2>Single-Wire Protocol</h2>
+                <p>
+
+                </p>
+                <ul>
+                    <li>
+                        <a id="link-color" href="esp32modules/dht22.html">DHT22 Sensor</a> - Retrieve temperature and humidity data
+                    </li>
+                </ul>
+                
             </div>
         </div>
     `;

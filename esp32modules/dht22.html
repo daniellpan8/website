@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DHT22 with ESP32</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/an-old-hope.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="../images/LogoOG1212.jpg"></head>
+</head>
+<body>
+    <div id="navbar-container"></div>
+    <script src="../loadNavbar.js"></script>
+    
+    <h1>DHT22 Module with ESP32</h1>
+
+    <h2>Overview</h2>
+    <p>The DHT22 module is a low-cost digital temperature and humidity sensor. It offers a high level of accuracy and reliability, 
+        making it suitable for indoor or outdoor environments. Its temperature measuring range is -40°C to 80°C with an accuracy of ±0.5°C. 
+        The humidity measuring range is 0% to 100% with an accuracy of ±2%. Its operating voltage is 3.3V to 6V, making it compatible with 
+        the ESP32 and other microcontrollers.
+    </h2>
+        <ul>
+            <li>ESP32 microcontroller</li>
+            <li>DHT22 module</li>
+            <li>Jumper wires</li>
+            <li>Breadboard (optional)</li>
+        </ul>
+    <h2>Wiring Connections</h2>
+    <p>The DHT22 temperature and humidity module uses a single-wire communication protocol. The protocol only requires a 
+        single data pin connection for transmitting data to the microcontroller. The connections are as follows:
+    </p>
+    <table>
+        <tr>
+            <th>DHT22</th>
+            <th>ESP32</th>
+        </tr>
+        <tr>
+            <td>VCC</td>
+            <td>3v3</td>
+        </tr>
+        <tr>
+            <td>GND</td>
+            <td>GND</td>
+        </tr>
+        <tr>
+            <td>DATA</td>
+            <td>4</td>
+            
+        </tr>
+    </table>
+    <h2>Library Installation (platformio.ini file)</h2>
+    <pre class="lib-code"><code>[env:esp32dev]
+platform = espressif32
+board = esp32dev
+framework = arduino
+lib_deps = adafruit/DHT sensor library@^1.4.6</code></pre>
+    <h2>Example Code</h2>
+    <pre class="large-code"><code class="language-cpp">/* DHT22 code with ESP32 */
+#include "DHT.h"
+
+#define DHTPIN 4
+#define DHTTYPE DHT22 
+DHT dht(DHTPIN, DHTTYPE);
+
+void setup() {
+    Serial.begin(9600);
+    Serial.println(F("DHT22 test"));
+    dht.begin();  
+}
+
+void loop() {
+    // Read temperature
+    float t = dht.readTemperature();
+    // Read humidity
+    float h = dht.readHumidity();
+    
+    // Check if failure to read
+    if (isnan(h) || isnan(t)) {
+        Serial.println(F("Failed to read from DHT sensor!"));
+        return;
+    }
+    
+    // Heat index in celcius
+    float hic = dht.computeHeatIndex(t, h, false);
+    
+    // Print data to serial monitor
+    Serial.print("Temperature: ");
+    Serial.println(t);
+    Serial.print(F("Humidity: "));
+    Serial.print(h);
+    Serial.println("%");
+
+    // Delay 4 seconds to avoid overheating the module causing inaccurate readings
+    delay(4000);
+}</code></pre>
+
+    <script>
+        hljs.highlightAll();
+    </script>
+    
+</body>
+</html>

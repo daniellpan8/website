@@ -126,6 +126,19 @@ nav {
     font-style: italic;
 }
 
+.center-image {
+    display: block;
+    margin: 0 auto; 
+    width: 50%;
+    border-radius: 10px;
+}
+.reference {
+    font-size: 0.5em;
+    text-align: center;
+    margin: 0 auto; 
+    width: 50%;
+}
+
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -227,5 +240,11 @@ tr:nth-child(even) {
     }
     #nav-links {
         font-size: 0.5em;
+    }
+    .reference {
+        font-size: 0.4rem;
+        text-align: center;
+        margin: 0 auto; 
+        width: 50%;
     }
 }
